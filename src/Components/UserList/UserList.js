@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { requestApi } from "../../API/api";
-
+import User from "../User/User";
 const UserList = props => {
 	const [usersList, setUsersList] = useState([]);
 
@@ -28,10 +28,14 @@ const UserList = props => {
 				return (
 					<div key={idValue}>
 						<hr></hr>
-						Name: {firstName} {lastName}
-						Location: {streetName} {streetNumber},{city}
-						E-mail: {email}
-						<img src={`${picMedium}`}></img>
+						<User
+							firstName={firstName}
+							lastName={lastName}
+							streetName={streetName}
+							streetNumber={streetNumber}
+							city={city}
+							email={email}
+							picture={picMedium}></User>
 					</div>
 				);
 			})}
