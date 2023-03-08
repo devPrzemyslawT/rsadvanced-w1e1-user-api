@@ -11,8 +11,7 @@ const UserList = props => {
 	const [inValue, setInValue] = useState(0);
 
 	useEffect(() => {
-		console.log("use effect");
-		requestApi( inValue )
+		requestApi(inValue)
 			.then(data => {
 				setUsersList(data.results);
 				setGetState(false);
@@ -28,7 +27,6 @@ const UserList = props => {
 	};
 	const handleOnInChange = e => {
 		setInValue(e.target.value);
-		console.log(inValue);
 	};
 	return (
 		<div>
@@ -42,6 +40,10 @@ const UserList = props => {
 					const streetName = elem.location.street.name;
 					const streetNumber = elem.location.street.number;
 					const city = elem.location.city;
+					const state = elem.location.state;
+					const postcode = elem.location.postcode;
+					const coordinatesLat = elem.location.coordinates.latitude;
+					const coordinatesLon = elem.location.coordinates.longitude;
 					const email = elem.email;
 					const picMedium = elem.picture.medium;
 					const idValue = elem.id.value;
@@ -55,6 +57,10 @@ const UserList = props => {
 								streetName={streetName}
 								streetNumber={streetNumber}
 								city={city}
+								state={state}
+								postcode={postcode}
+								coordinatesLat={coordinatesLat}
+								coordinatesLon={coordinatesLon}	
 								email={email}
 								picture={picMedium}></User>
 						</div>
