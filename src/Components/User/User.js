@@ -1,6 +1,7 @@
 import React from "react";
 import "./User.css";
 import Map from "../Map/Map";
+import CustomizedDialogs from "../DialogWindow/DialogWindow";
 const User = props => {
 	const {
 		firstName,
@@ -36,14 +37,16 @@ const User = props => {
 					</p>
 				</div>
 			</div>
-			<Map
+			<CustomizedDialogs
+				firstName={firstName}
+				lastName={lastName}
 				streetName={streetName}
 				streetNumber={streetNumber}
 				city={city}
 				state={state}
 				postcode={postcode}
 				latitude={coordinatesLat}
-				longitude={coordinatesLon}></Map>
+				longitude={coordinatesLon}></CustomizedDialogs>
 		</div>
 	);
 };
