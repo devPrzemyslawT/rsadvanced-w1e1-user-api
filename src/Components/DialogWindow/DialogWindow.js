@@ -48,17 +48,7 @@ BootstrapDialogTitle.propTypes = {
 };
 
 export default function CustomizedDialogs(props) {
-	const {
-		firstName,
-		lastName,
-		streetName,
-		streetNumber,
-		city,
-		state,
-		postcode,
-		latitude,
-		longitude,
-	} = props;
+	const { user } = props;
 	const [open, setOpen] = React.useState(false);
 
 	const handleClickOpen = () => {
@@ -80,20 +70,11 @@ export default function CustomizedDialogs(props) {
 				<BootstrapDialogTitle
 					id='customized-dialog-title'
 					onClose={handleClose}>
-					{firstName} {lastName}
+					{user.name.first} {user.name.last}
 				</BootstrapDialogTitle>
 				<DialogContent dividers>
-					<Typography gutterBottom>
-						
-
-						<Map
-							streetName={streetName}
-							streetNumber={streetNumber}
-							city={city}
-							state={state}
-							postcode={postcode}
-							latitude={latitude}
-							longitude={longitude}></Map>
+					<Typography component={"span"} variant={"body2"} gutterBottom>
+						<Map user={user}></Map>
 					</Typography>
 				</DialogContent>
 				<DialogActions>

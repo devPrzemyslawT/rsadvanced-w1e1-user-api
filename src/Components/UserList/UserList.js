@@ -35,34 +35,10 @@ const UserList = props => {
 				<InNum onClick={handleOnGetClick} onChange={handleOnInChange}></InNum>
 
 				{usersList.map(elem => {
-					const firstName = elem.name.first;
-					const lastName = elem.name.last;
-					const streetName = elem.location.street.name;
-					const streetNumber = elem.location.street.number;
-					const city = elem.location.city;
-					const state = elem.location.state;
-					const postcode = elem.location.postcode;
-					const coordinatesLat = elem.location.coordinates.latitude;
-					const coordinatesLon = elem.location.coordinates.longitude;
-					const email = elem.email;
-					const picMedium = elem.picture.medium;
-					const idValue = elem.id.value;
-
 					return (
-						<div key={idValue}>
+						<div key={elem.login.uuid}>
 							<hr></hr>
-							<User
-								firstName={firstName}
-								lastName={lastName}
-								streetName={streetName}
-								streetNumber={streetNumber}
-								city={city}
-								state={state}
-								postcode={postcode}
-								coordinatesLat={coordinatesLat}
-								coordinatesLon={coordinatesLon}	
-								email={email}
-								picture={picMedium}></User>
+							<User user={elem}></User>
 						</div>
 					);
 				})}

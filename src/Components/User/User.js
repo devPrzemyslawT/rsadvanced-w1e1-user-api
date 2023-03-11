@@ -3,50 +3,30 @@ import "./User.css";
 import Map from "../Map/Map";
 import CustomizedDialogs from "../DialogWindow/DialogWindow";
 const User = props => {
-	const {
-		firstName,
-		lastName,
-		streetName,
-		streetNumber,
-		city,
-		state,
-		postcode,
-		coordinatesLat,
-		coordinatesLon,
-		email,
-		picture,
-	} = props;
+	const { user } = props;
 
 	return (
 		<div>
 			<div className='user'>
 				<div className='pic'>
 					<p>
-						<img src={picture} alt='user picture'></img>
+						<img src={user.picture.medium} alt='user picture'></img>
 					</p>
 				</div>
 				<div className='data'>
 					<p>
-						<strong>Name:</strong> {firstName} {lastName}
+						<strong>Name:</strong> {user.name.first} {user.name.last}
 					</p>
 					<p>
-						<strong>Location:</strong> {streetName} {streetNumber}, {city}
+						<strong>Location:</strong> {user.location.street.name}{" "}
+						{user.location.street.number}, {user.location.city}
 					</p>
 					<p>
-						<strong>E-mail:</strong> {email}
+						<strong>E-mail:</strong> {user.email}
 					</p>
 				</div>
 			</div>
-			<CustomizedDialogs
-				firstName={firstName}
-				lastName={lastName}
-				streetName={streetName}
-				streetNumber={streetNumber}
-				city={city}
-				state={state}
-				postcode={postcode}
-				latitude={coordinatesLat}
-				longitude={coordinatesLon}></CustomizedDialogs>
+			<CustomizedDialogs user={user }></CustomizedDialogs>
 		</div>
 	);
 };

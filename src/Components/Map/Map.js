@@ -8,19 +8,15 @@ import markerIconPng from "leaflet/dist/images/marker-icon.png";
 import { Icon } from "leaflet";
 import "leaflet/dist/leaflet.css";
 import "./Map.css";
+import { useTab } from "@mui/base";
 
 const Map = props => {
-	const {
-		streetName,
-		streetNumber,
-		city,
-		state,
-		postcode,
-		latitude,
-		longitude,
-	} = props;
-
-	const position = [latitude, longitude];
+	const { user } = props;
+	// console.log(user);
+	const position = [
+		user.location.coordinates.latitude,
+		user.location.coordinates.longitude,
+	];
 	return (
 		<div>
 			<MapContainer center={position} zoom={13} scrollWheelZoom={true}>
@@ -38,9 +34,11 @@ const Map = props => {
 						})
 					}>
 					<Popup>
-						{streetName} {streetNumber} <br />
-						{state}, {city}, {postcode} <br />
-						Latitude: {latitude}, Longitude: {longitude}
+						{user.location.street.name} {user.location.street.number} <br />
+						{user.location.state}, {user.location.city},{" "}
+						{user.location.postcode} <br />
+						Latitude: {user.location.coordinates.latitude}, Longitude:
+						{user.location.coordinates.longitude}
 					</Popup>
 				</Marker>
 			</MapContainer>
